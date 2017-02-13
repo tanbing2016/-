@@ -1,0 +1,423 @@
+@import (reference/*只调取公共样式，不解析*/) "pubile";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+}
+
+.header {
+  height: 63px;
+  border-bottom: 1px solid darken(@color-border, 10%); /*darken在原来的颜色基础上加深 / lighten于darken相反,less自带的方法*/
+  background: @color-white;
+
+  .content {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: unit((@content-w)-20, px);
+    height: 100%;
+
+    .logo, .nav, .login {
+      float: left;
+    }
+    .logo {
+      margin-right: 60px;
+      width: 160px;
+      height: 100%;
+      font-size: 0;
+      background: url("../img/kbs-logo.png") no-repeat center;
+    }
+    .nav {
+      height: 100%;
+
+      li {
+        float: left;
+
+        a {
+          display: block;
+          width: 90px;
+          height: 55px;
+          line-height: 55px;
+          text-align: center;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          color: @text-color;
+          font-size: 16px;
+
+          &.downLoad {
+            //  下载区域
+            position: relative;
+            .weChat {
+              position: absolute;
+              left: -15px;
+              top: 59px;
+              width: 92px;
+              z-index: 10;
+              height: 0;
+              padding: 0 14px;
+              overflow: hidden;
+              .transition(@duration: 0.3s);
+              img {
+                display: block;
+                width: 92px;
+                height: 92px;
+              }
+
+              span {
+                display: block;
+                font-size: 14px;
+                line-height: 25px;
+              }
+            }
+            .weChatBg {
+              .weChat;
+              z-index: 9;
+              background: #fff;
+              opacity: 0.7;
+            }
+            &:hover {
+              .weChat, .weChatBg {
+                padding: 18px 14px;
+                height: 142px;
+              }
+            }
+          }
+          &.bg {
+            color: @color-white;
+            background: @color-blue;
+          }
+          &:hover {
+            border-top-color: @color-blue;
+          }
+          &.liveQQ {
+            width: 63px;
+            height: 63px;
+            border: none;
+
+            img {
+              width: 100%;
+              height: 100%;
+
+            }
+          }
+        }
+      }
+    }
+    .login {
+      float: right;
+      margin-top: unit((63-28)/2, px);
+      a {
+        display: block;
+        width: 46px;
+        height: 28px;
+        font-size: 12px;
+        color: @color-white;
+        line-height: 28px;
+        text-align: center;
+        background: @color-blue;
+        border-radius: 5px;
+
+        &:hover {
+          background: darken(@color-blue, 20%);
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  .main {
+    width: 1040px;
+    margin: 20px auto;
+    height: 100%;
+    .menu {
+      float: left;
+      position: relative;
+      background: @color-white;
+      width: 198px;
+      height: 100%;
+      overflow: hidden;
+      ul {
+        position: absolute;
+        width: 100%;
+      }
+      li {
+        position: relative;
+        border-left: 4px solid transparent;
+        width: 170px;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 24px;
+        font-size: 16px;
+        &.select {
+          border-left: 4px solid @color-blue;
+          background: lighten(@color-blue, 30%);
+          a {
+            i {
+              float: right;
+              margin-top: 18px;
+              margin-right: 16px;
+              background: url("../img/jiantou.gif") no-repeat;
+              background-size: 100% 100%;
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+        &:hover {
+          .select;
+        }
+        a {
+          color: #000;
+          display: inline-block;
+          width: 157px;
+          height: 100%;
+        }
+      }
+    }
+    .right {
+      float: right;
+      width: 820px;
+      height: 100%;
+
+      .top {
+        position: relative;
+        height: 80px;
+        border: 1px solid @color-border;
+        background: @color-white;
+        .btn {
+          display: block;
+          width: 20px;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+
+          &:hover {
+            &.btnLeft {
+              .arrow {
+                border-right-color: @color-blue;
+              }
+            }
+            &.btnRight {
+              .arrow {
+                border-left-color: @color-blue;
+              }
+            }
+          }
+          &.btnLeft {
+            .arrow {
+              display: block;
+              position: absolute;
+              top: 50%;
+              margin-top: -15px;
+              border: 15px solid transparent;
+              border-right-color: @text-color;
+              left: -15px;
+            }
+            .arrow:after {
+              .arrow;
+              display: block;
+              position: absolute;
+              content: "";
+              margin-top: -15px;
+              left: -10px;
+              border-right-color: @color-white;
+            }
+          }
+          &.btnRight {
+            left: auto;
+            right: 0;
+            .arrow {
+              display: block;
+              position: absolute;
+              top: 50%;
+              margin-top: -15px;
+              border: 15px solid transparent;
+              border-left-color: @text-color;
+              left: 5px;
+            }
+            .arrow:after {
+              .arrow;
+              display: block;
+              position: absolute;
+              content: "";
+              margin-top: -15px;
+              left: -20px;
+              border-left-color: @color-white;
+            }
+          }
+        }
+        .wrapper {
+          position: relative;
+          height: 70px;
+          overflow: hidden;
+          margin: 5px 20px;
+
+          .item {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            li {
+              float: left;
+
+              a {
+                display: block;
+                width: 110px;
+                height: 61px;
+                padding-top: 9px;
+
+                span {
+                  display: block;
+                  line-height: 27px;
+                  text-align: center;
+                  font-size: 16px;
+                  color: @text-color;
+
+                  &.week {
+                    color: lighten(@text-color, 30%);
+                  }
+                }
+                &.bg, &:hover {
+                  background: lighten(@color-blue, 30%);
+                  span {
+                    color: @color-blue;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .news {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+        background: @color-white;
+        overflow: hidden;
+
+        .video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          border: 1px solid @color-border;
+
+          .video-date {
+            height: 20px;
+            width: 100%;
+            padding: 10px 0 10px 15px;
+            font-size: 16px;
+            font-weight: 700;
+            color: @text-color;
+            border-bottom:1px solid @color-border;
+          }
+          a {
+            display: block;
+            width: 820px;
+            height: 60px;
+            border-bottom: 1px solid @color-border;
+
+            .inner {
+              height: 60px;
+              width: 100%;
+              li {
+                position: relative;
+                height: 60px;
+                float: left;
+                width: 158px;
+                font-size: 16px;
+                color: lighten(@text-color,10%);
+                &.newsItem1 {
+                  position: relative;
+                  line-height: 60px;
+                  font-size: 16px;
+                  padding-left: 20px;
+
+                  i {
+                    display: inline-block;
+                    position: absolute;
+                    top: 30%;
+                    right: 5px;
+                    width: 20px;
+                    height: 20px;
+                    background: url("../img/vip.jpg") no-repeat;
+                    background-size: 100% 100%;
+                  }
+                }
+                &.newsItem2{
+                  width: 128px;
+                  line-height: 60px;
+                  font-size: 14px;
+                  color: lighten(@text-color,20%);
+                }
+                &.newsItem3{
+                  line-height: 60px;
+                  img{
+                    margin-top: 10px;
+                    width: 40px;
+                    height: 40px;
+                  }
+                  span{
+                    position: absolute;
+                    display:inline-block;
+                    top: 0;
+                    left: 60px;
+                    width: 80px;
+                    height: 60px;
+                    color:@text-color;
+                  }
+                }
+                &.newsItem4{
+                  width: 80px;
+                  height: 60px;
+                  line-height: 60px;
+                  font-size: 18px;
+                  color: @color-blue;
+                }
+                &.newsItem5{
+                  width: 148px;
+                  line-height: 60px;
+                  img{
+                    margin-left: 20px;
+                    width: 40px;
+                    height: 40px;
+                    margin-top: 10px;
+                  }
+                  span{
+                    float: left;
+                    margin-left: -8px;
+                    color:@text-color;
+                  }
+
+                }
+                &.newsItem6{
+                  width: 128px;
+                  height: 60px;
+
+                  span{
+                    display: inline-block;
+                    text-align: center;
+                    width: 100%;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 15px;
+                    color: @color-blue;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.iScrollIndicator{
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
